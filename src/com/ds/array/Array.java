@@ -84,12 +84,16 @@ public class Array<T> {
     }
 
     public void remove(T item) {
+        Object[] temp = new Object[this.count];
         int index = 0;
         int i;
         for(i = 0; i < this.count; i++) {
-            if(this.array[i] != item)
-                this.array[index++] = this.array[i];
+            if(this.array[i] != item) {
+                temp[index++] = this.array[i];
+            }
         }
+        this.count = this.count - index + 1;
+        this.array = temp;
     }
 
     public int find(T item) {
